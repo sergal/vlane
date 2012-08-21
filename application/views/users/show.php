@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="span12">
-        <h1><strong><center>Моя страница</strong></center></h1>
+    <div align="center" class="span12">
+        <p align="center"><h1><strong>Моя страница</strong></h1></p>
     </div>
 </div>
 <div class="row">
