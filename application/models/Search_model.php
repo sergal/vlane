@@ -16,4 +16,6 @@ class Search_model extends CI_Model
         return $name->result_array();
     }
 
+
+
 }
