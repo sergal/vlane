@@ -1,4 +1,7 @@
 <?php
+/*
+ * Контроллер информации о пользователе
+ */
 class Users extends CI_Controller
 {
     //Метод отображения имени пользователя
@@ -40,6 +43,4 @@ class Users extends CI_Controller
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
-
-
 }
