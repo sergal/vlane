@@ -1,7 +1,9 @@
 <div class="row">
     <div class="span12">
         <h1><strong>
-            <center>Отряд
+            <center>Отряд <?php
+           echo $group["name"];
+?>
         </strong></center></h1>
     </div>
     <div class="span6">
