@@ -7,7 +7,7 @@ class Group_model extends CI_Model
         parent::__construct();
     }
 
-    public function get_group_info($id)
+    public function get_group($id)
     {
         $group = $this->db->get_where('groups', array('id' => $id));
         return $group->row_array();
