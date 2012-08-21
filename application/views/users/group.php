@@ -1,19 +1,20 @@
 <div class="row">
     <div class="span12">
         <h1><strong>
-            <center>Отряд
+            <center>Отряд <?php
+           echo $group["name"];
+?>
         </strong></center></h1>
     </div>
-    <div class="span12">
+    <div class="span6">
         <ul>
             <?php foreach ($users as $user) : ?>
             <li>
                 <?php
-                echo $user["name"];
+                echo" <a href=/users/show/".$user["id"].">".$user["name"]."</a>";
 ?>
             </li>
             <?php endforeach ?>
         </ul>
-
     </div>
 </div>
