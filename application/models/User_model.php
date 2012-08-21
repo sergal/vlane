@@ -22,6 +22,7 @@ class User_model extends CI_Model
         return $users->result_array();
     }
 
+
     public function get_by_school($name_school)
     {
         $user = $this->db->get_where('users', array('school' => $name_school));
