@@ -50,7 +50,7 @@ class Users extends CI_Controller
         $this->load->model("User_model");
         $result['pass'] = $this->User_model->get_by_login($login);
         if($result['pass']==$pass){
-            $this->output->set_header("Location:localhost/index.php/users/show/".$result['id']);
+            redirect('/users/show/'.$result['id'], 'location');
         }
         else{
             $this->load->view('login');
