@@ -19,7 +19,7 @@ class Users extends CI_Controller
         $this->load->view("footer");
     }
 
-    public function city($id_city)
+    public function city($city)
     {
         $this->load->view("header");
         $this->load->model("User_model");
