@@ -1,8 +1,12 @@
 <div class="row">
     <div class="span12">
         <h1><strong>
-            <center>Отряд <?php
+            <center>отряд <?php
            echo $group["name"];
+                echo " ";
+                echo "(";
+                echo $group["nickname"];
+                echo ")";
 ?>
         </strong></center></h1>
     </div>

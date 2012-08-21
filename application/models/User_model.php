@@ -36,6 +36,16 @@ class User_model extends CI_Model
         return $user->result_array();
 
     }
+
+    public function get_by_login($login){
+      $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('login', $login);
+        $user=$this->db->get();
+        return $user->row_array();
+
+    }
+
 }
 
 
