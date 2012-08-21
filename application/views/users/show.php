@@ -18,7 +18,10 @@
          echo"<br>";
          echo $user["birthday"];
          echo"<br>";
-         echo $user["school"]
+         echo $user["school"];
+         echo $group["name"];
+         echo "(";
+         echo $group["season_id"]
          ?>
      </div>
 </div>
