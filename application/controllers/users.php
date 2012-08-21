@@ -10,11 +10,11 @@ class Users extends CI_Controller
         $this->load->view("footer");
     }
 
-    public function group($id_group)
+    public function school($name_school)
     {
         $this->load->view("header");
         $this->load->model("User_model");
-        $data["group"] = $this->User_model->get_group($id_group);
+        $data["school"] = $this->User_model->get_by_school($name_school);
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
@@ -23,8 +23,9 @@ class Users extends CI_Controller
     {
         $this->load->view("header");
         $this->load->model("User_model");
-        $data["city"] = $this->User_model->get_city($id_city);
+        $data["city"] = $this->User_model->get_by_city($city);
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
+
 }
