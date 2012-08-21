@@ -45,4 +45,15 @@ class Users extends CI_Controller
         $this->load->view("users/group", $data);
         $this->load->view("footer");
     }
+    public function login($login, $pass){
+        $this->load->view("header");
+        $this->load->model("User_model");
+        $result['pass'] = $this->User_model->get_by_login($login);
+        if($result['pass']==$pass){
+            redirect('/users/show/'.$result['id'], 'location');
+        }
+        else{
+            $this->load->view('login');
+        }
+    }
 }
