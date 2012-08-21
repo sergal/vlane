@@ -18,9 +18,10 @@ class User_model extends CI_Model
         $this->db->select('name, id');
         $this->db->from('members');
         $this->db->join('users', 'users.id = members.user_id');
-        $users = $this->db->get_where('users', array('group_id' => $group_id));
+        $users = $this->db->where('group_id', $group_id);
         return $users->result_array();
     }
+
 
     public function get_by_school($name_school)
     {
