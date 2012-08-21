@@ -19,7 +19,8 @@ class User_model extends CI_Model
         return $user->result_array();
     }
 
-    public function get_by_city($city){
+    public function get_by_city($city)
+    {
         $user = $this->get_where('user', array('city' => $city));
         return $user->result_array();
     }
