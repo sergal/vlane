@@ -14,14 +14,15 @@ class User_model extends CI_Model
     }
 
 
+
+
     public function get_by_group($group_id)
     {
-        $this->db->select("user_id");
-        $arr_users = $this->db->get_where('members', array('group_id' => $group_id));
-        foreach ($arr_users as $elem) {
-            $users[] = $this->get_user($elem["user_id"]);
-        }
-        return $users;
+        $this->db->select('name, id');
+        $this->db->from('members');
+        $this->db->join('users', 'users.id = members.user_id');
+        $users = $this->db->get_where('users', array('group_id' => $group_id));
+        return $users->result_array();
     }
 
 
