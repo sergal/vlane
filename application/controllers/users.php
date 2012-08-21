@@ -45,6 +45,8 @@ class Users extends CI_Controller
         $this->load->view("users/group", $data);
         $this->load->view("footer");
     }
+
+    //Метод логина
     public function login($login, $pass){
         $this->load->view("header");
         $this->load->model("User_model");
