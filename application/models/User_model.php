@@ -7,7 +7,7 @@ class User_model extends CI_Model
         parent::__construct();
     }
 
-    public function get_users($id)
+    public function get_user($id)
     {
         $user = $this->db->get_where('users', array('id' => $id));
         return $user->row_array();

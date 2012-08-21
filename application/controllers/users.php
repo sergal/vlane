@@ -1,6 +1,7 @@
 <?php
 class Users extends CI_Controller
 {
+    //Метод отображения имени пользователя
     public function show($id)
     {
         $this->load->view("header");
@@ -10,6 +11,7 @@ class Users extends CI_Controller
         $this->load->view("footer");
     }
 
+    //Метод отображения школы
     public function school($name_school)
     {
         $this->load->view("header");
@@ -19,6 +21,7 @@ class Users extends CI_Controller
         $this->load->view("footer");
     }
 
+    //Метод отображения города
     public function city($city)
     {
         $this->load->view("header");
@@ -27,5 +30,16 @@ class Users extends CI_Controller
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
+
+    //Метод отображения отряда
+    public function group($group)
+    {
+        $this->load->view("header");
+        $this->load->model("User_model");
+        $data["group"] = $this->User_model->get_by_group($group);
+        $this->load->view("users/show", $data);
+        $this->load->view("footer");
+    }
+
 
 }
