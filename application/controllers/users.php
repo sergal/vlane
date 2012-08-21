@@ -5,7 +5,7 @@ class Users extends CI_Controller
     {
         $this->load->view("header");
         $this->load->model("User_model");
-        $data["user"] = $this->User_model->get_user($id);
+        $data["user"] = $this->User_model->get_users($id);
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
@@ -27,5 +27,16 @@ class Users extends CI_Controller
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
+    public function group($group){
+        $this->load->view("header");
+        $this->load->model("User_model");
+        $data["group"] = $this->User_model->get_by_group($group);
+        $this->load->view("users/show", $data);
+        $this->load->view("footer");
+    }
+
+
+
+
 
 }
