@@ -13,6 +13,7 @@ class User_model extends CI_Model
         return $user->row_array();
     }
 
+
     public function get_by_group($group_id)
     {
         $this->db->select("user_id");
@@ -21,7 +22,19 @@ class User_model extends CI_Model
             $users[] = $this->get_user($elem["user_id"]);
         }
         return $users;
+    }
 
+
+    public function get_by_school($name_school)
+    {
+        $user = $this->db->get_where('user', array('school' => $name_school));
+        return $user->result_array();
+    }
+
+    public function get_by_city($city)
+    {
+        $user = $this->get_where('user', array('city' => $city));
+        return $user->result_array();
 
     }
 }
