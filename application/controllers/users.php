@@ -42,18 +42,24 @@ class Users extends CI_Controller
         $this->load->model("Group_model");
         $data["users"] = $this->User_model->get_by_group($group);
         $data["group"] = $this->Group_model->get_group($group);
-        $this->load->view("users/show", $data);
         $this->load->view("users/group", $data);
         $this->load->view("footer");
     }
 
     //Метод логина
-    public function login($login, $pass){
+    public function login(){
         $this->load->view("header");
         $this->load->model("User_model");
+        $login = $this->input->post('login');
+        $pass = $this->input->post('pass');
         $result['pass'] = $this->User_model->get_by_login($login);
         if($result['pass']==$pass){
             redirect('/users/show/'.$result['id'], 'location');
+            $this->load->library('session');
+            $user_data = array(
+                'username'  => $result['name']
+            );
+            $this->session->set_userdata($user_data);
         }
         else{
             $this->load->view('login');

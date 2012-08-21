@@ -19,9 +19,11 @@
          echo $user["birthday"];
          echo"<br>";
          echo $user["school"];
-         echo $group["name"];
-         echo "(";
-         echo $group["season_id"]
-         ?>
+         foreach($groups as $group) {
+             echo $group["name"];
+             echo $group["year"];
+             echo $group["type"];
+         }
+                  ?>
      </div>
 </div>
