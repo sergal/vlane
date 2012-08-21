@@ -3,6 +3,6 @@
 <html>
 <head>
     <title>вЛАНе</title>
-    <link href="../../web/css/bootstrap.css" rel="stylesheet">
+    <link href="http://localhost/web/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
