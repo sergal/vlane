@@ -13,9 +13,6 @@ class User_model extends CI_Model
         return $user->row_array();
     }
 
-
-
-
     public function get_by_group($group_id)
     {
         $this->db->select('name, id');
@@ -24,7 +21,6 @@ class User_model extends CI_Model
         $users = $this->db->get_where('users', array('group_id' => $group_id));
         return $users->result_array();
     }
-
 
     public function get_by_school($name_school)
     {
