@@ -15,7 +15,7 @@ class User_model extends CI_Model
 
     public function get_by_group($group_id)
     {
-        $this->db->select('name, members.id');
+        $this->db->select('name,users.id');
         $this->db->from('members');
         $this->db->join('users', 'users.id = members.user_id');
         $this->db->where('group_id', $group_id);
