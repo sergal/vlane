@@ -4,7 +4,7 @@ class User_model extends CI_Model
     public function __construct()
     {
         $this->load->database();
-        parent__construct();
+        parent::__construct();
     }
 
     public function get_user($id)
