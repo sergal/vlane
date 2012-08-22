@@ -1,17 +1,16 @@
 <div class="row">
     <div class="span12">
         <h1><strong>
-            <center>Отряды
+            <center>Отряды</center></strong></h1>
                 <ol>
-                    <li>
                         <?php
                         foreach ($groups as $name) {
-                            echo "<br>";
+                            echo "<li><a href='../group/".$name["id"]."'>";
                             echo $name["name"];
                             echo "(" . $name["nickname"] . ")";
+                            echo "</a></li>";
                         }
                         ?>
-                    </li>
                 </ol>
     </div>
 </div>
