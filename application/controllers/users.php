@@ -102,14 +102,4 @@ class Users extends CI_Controller
         }
     }
 
-    public function groups()
-    {
-        $this->load->model("Group_model");
-        $data = array();
-        $data["groups"] = $this->Group_model->get_groups(6);
-        $this->load->view("header");
-        $this->load->view("users/groups", $data);
-        $this->load->view("footer");
-    }
-
 }
