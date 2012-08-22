@@ -1,7 +1,7 @@
 <?php
 class Messages extends Base_Controller
 {
-    public function show($receiver){
+    public function show(){
         $this->set_header(2);
         $this->load->model('Message_model');
         $this->load->library('session');
