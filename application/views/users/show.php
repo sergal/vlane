@@ -5,7 +5,10 @@
 </div>
 <div class="row">
      <div class="span4">
-         <img src="photo.jpg" alt="Здесь будет фото">
+         <?php
+
+         echo '<img src="/web/img/'.$user["photo"].'" alt="фото">';
+         ?>
      </div>
      <div class="span8">
          <h2>
@@ -22,7 +25,7 @@
          echo "<br>";
          echo "<br>";
          echo "<h3></h3>";
-         echo "<strong>"."Список отрядов"."</strong>"."<br>"."<br>";
+         echo "<strong>"."Список отрядов :"."</strong>"."<br>"."<br>";
          foreach($groups as $group){
                      echo "<a href=/users/group/".$group["id"].">".$group["name"]."</a>"." ";
              echo "(".$group["type"]."-".$group["year"].")";

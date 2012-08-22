@@ -21,10 +21,11 @@ class Message_model extends CI_Model
         $this->db->insert('messages', $message);
 
     }
-    public function check_message($get_message){
-if ($a=$_GET[$get_message]){$this->db->set('status', '1');
-$this->db->insert('messages');
-}
 
+    public function mark_as_read($message_id)
+    {
+        $data = array('status' => 1);
+        $this->db->where('id', $message_id);
+        $this->db->update('messages', $data);
     }
 }
