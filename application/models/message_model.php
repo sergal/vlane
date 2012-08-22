@@ -48,4 +48,9 @@ class Message_model extends CI_Model
         $query = $this->db->get_where('messages', $statement);
         return $query->result_array();
     }
+
+    public function delete_message($id)
+    {
+        $this->db->delete('messages', array('id' => $id));
+    }
 }

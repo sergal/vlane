@@ -25,10 +25,16 @@
          echo "<br>"."<br>";
                  echo "<h3></h3>";
          echo "<strong>"."Список отрядов :"."</strong>"."<br>"."<br>";
+         ?>
+         <ul>
+             <li>
+                 <?php
          foreach($groups as $group){
-                     echo "<a href=/users/group/".$group["id"].">".$group["name"]."</a>"." ";
+                                  echo "<a href=/users/group/".$group["id"].">".$group["name"]."</a>"." ";
              echo "(".$group["type"]."-".$group["year"].")";
          }
                   ?>
+             </li>
+             <ul>
      </div>
 </div>

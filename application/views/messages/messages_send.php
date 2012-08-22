@@ -4,16 +4,17 @@
         <?php
         echo "Кому :" . $user["name"];
         $this->load->helper('form');
-        echo form_open('messages/send/.$user["user_id"]');
+        echo form_open('messages/send/'.$user["user_id"]);
                 ?>
     </div>
     <div class="span8">
         <?php
-        echo form_textarea('text');
+        echo form_textarea(array('value' => 'text', 'class' => 'input-xlarge'));
         echo "<br>";
-        echo form_submit('submit', 'Отправить');
+        echo form_submit(array('value' => 'Отправить', 'class' => 'btn btn-primary'));
+        echo form_close();
+
         ?>
-    </div>
 <div>
 
 

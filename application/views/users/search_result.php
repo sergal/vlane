@@ -4,9 +4,9 @@
 $i = 0;
 foreach ($result as $num)
 {
-echo "<tr><td>";
+echo "<tr><td><a href='http://localhost/index.php/users/show/".$num["id"]."'>";
 echo $num["name"];
-echo "</td><td>";
+echo "</a></td><td>";
 echo $num["city"];
 echo "</td><td>";
 echo $num["school"];
