@@ -22,9 +22,8 @@
          echo $user["birthday"];
          echo"<br>";
          echo $user["school"];
-         echo "<br>";
-         echo "<br>";
-         echo "<h3></h3>";
+         echo "<br>"."<br>";
+                 echo "<h3></h3>";
          echo "<strong>"."Список отрядов :"."</strong>"."<br>"."<br>";
          foreach($groups as $group){
                      echo "<a href=/users/group/".$group["id"].">".$group["name"]."</a>"." ";
