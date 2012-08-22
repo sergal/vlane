@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <?php
 /*
  * Контроллер информации о пользователе
@@ -58,16 +59,25 @@ class Users extends CI_Controller
         $pass = $this->input->post('password');
         $result = $this->User_model->get_by_login($login);
         if ($result['password'] == $pass && $pass != 0) {
-            redirect('/users/show/' . $result['id'], 'location');
             $this->load->library('session');
             $user_data = array(
                 'username' => $result['name']
             );
             $this->session->set_userdata($user_data);
-
+            $test = $this->session->userdata('username');
+            redirect('/users/show/' . $result['id'], 'location');
         } else {
             $this->load->view('users/login');
         }
         $this->load->view("footer");
+    }
+    public function logout(){
+        $this->load->helper('url');
+        $this->load->helper('cookie');
+        $this->load->library('session');
+       if($this->input->cookie('ci_session')!=null){
+           $this->session->sess_destroy();
+           $this->load->view('users/login');
+       }
     }
 }
