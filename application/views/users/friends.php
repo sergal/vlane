@@ -11,7 +11,6 @@
     <tbody>
     <?php
     if (!empty($friends)) {
-        $i = 0;
         foreach ($friends as $num) {
             echo "<tr><td><a href='" . site_url("/users/show") . "/" . $num["id"] . "'>";
             echo $num["name"];
@@ -25,7 +24,6 @@
             echo "
     <form action='del_friend' method='post'><input type='hidden' name='fid' value='" . $num["id"] . "'><input type='submit' class='btn btn-mini' value='X'></form>";
             echo "</td></tr>";
-            $i++;
         }
     }
     ?></tbody>
