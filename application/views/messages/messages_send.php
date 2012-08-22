@@ -11,7 +11,9 @@
         <?php
         echo form_textarea(array('value' => 'text', 'class' => 'input-xlarge'));
         echo "<br>";
-        echo form_submit('submit', 'Отправить');
+        echo form_submit(array('value' => 'Отправить', 'class' => 'btn btn-primary'));
+        echo form_close();
+
         ?>
 <div>
 
