@@ -5,7 +5,7 @@
         </p>
 
         <p>
-            <a href="<?php echo site_url("/messages/create"."/".$user["id"] ?>" class="btn">Отправить
+            <a href="<?php echo site_url("/messages/create")."/".$user["id"]; ?>" class="btn">Отправить
                 сообщение</a>
         </p>
     </div>
