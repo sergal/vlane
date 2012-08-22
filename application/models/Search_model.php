@@ -17,8 +17,9 @@ class Search_model extends CI_Model
     }
     public function search_group($id)
     {$this->db->select('name, nickname');
-        $this->db->from('groups');
-        $this->db->where('id', $id);
+        $this->db->from('members');
+        $this->db->join('groups','groups.id=members.group_id');
+        $this->db->where('members.user_id', $id);
         $group = $this->db->get();
         return $group->result_array();
 
