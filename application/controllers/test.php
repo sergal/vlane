@@ -14,6 +14,12 @@ class Test extends CI_Controller
         $this->load->model("Message_model");
         $this->Message_model->mark_as_read($message_id);
     }
+
+    public function get_messages($user_id, $received)
+    {
+        $this->load->model("Message_model");
+        $this->Message_model->get_messages($user_id, $received);
+    }
 }
 
 ?>
