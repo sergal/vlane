@@ -119,8 +119,8 @@ class Users extends Base_Controller
         $this->load->model("User_model");
         $this->load->model("Search_model");
         $this->load->library('session');
-        $data["uid"] = $this->session->userdata('id');
-        $friends = $this->Friends_model->get_friends($data["uid"]);
+        $data["user_id"] = $this->session->userdata('id');
+        $friends = $this->Friends_model->get_friends($this->session->userdata('user_id'));
         $i = 0;
         foreach($friends as $fid)
         {
@@ -128,7 +128,7 @@ class Users extends Base_Controller
             $data["group"][$i] = $this->Search_model->search_group($data["friends"][$i]["id"]);
             $i++;
         }
-        $this->load->view("header");
+        $this->set_header();
         $this->load->view("users/friends", $data);
         $this->load->view("footer");
     }
