@@ -9,5 +9,4 @@ class Messages extends Base_Controller
         $this->load->view("messages/create",$data);
         $this->load->view("footer");
     }
-
 }
