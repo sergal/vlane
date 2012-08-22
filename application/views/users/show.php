@@ -19,6 +19,7 @@
          echo $user["birthday"];
          echo"<br>";
          echo $user["school"];
+         echo "<br>";
          foreach($groups as $group){
                      echo $group["name"];
              echo "(".$group["type"]."-".$group["year"].")";
