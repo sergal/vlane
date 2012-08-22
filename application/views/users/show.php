@@ -32,7 +32,9 @@
                                                echo "<li>"."<a href=/users/group/".$group["id"].">".$group["name"]."</a>"." ";
              echo "(".$group["type"]."-".$group["year"].")</li>";
          }
-                  ?>
+                  ?><br><form action="../../friends/add/" method="post">
+             <input type="submit" value="Добавить в друзья" class="btn-large">
+         <input type="hidden" value="<?php echo $user["id"] ?>"></form>
                           <ul>
      </div>
 </div>
