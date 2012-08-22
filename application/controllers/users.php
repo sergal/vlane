@@ -2,7 +2,7 @@
 /*
  * Контроллер информации о пользователе
  */
-class Users extends CI_Controller
+class Users extends Base_Controller
 {
     public function index(){
         $this->load->helper('url');
@@ -20,7 +20,7 @@ class Users extends CI_Controller
             $this->load->library('session');
             $id = $this->session->userdata('user_id');
         }
-        $this->load->view("header");
+        $this->set_header();
         $this->load->model("User_model");
         $this->load->model("Group_model");
         $data["user"] = $this->User_model->get_user($id);
@@ -33,7 +33,7 @@ class Users extends CI_Controller
     public
     function school($name_school)
     {
-        $this->load->view("header");
+        $this->set_header();
         $this->load->model("User_model");
         $data["school"] = $this->User_model->get_by_school($name_school);
         $this->load->view("users/show", $data);
@@ -44,7 +44,7 @@ class Users extends CI_Controller
     public
     function city($city)
     {
-        $this->load->view("header");
+        $this->set_header();
         $this->load->model("User_model");
         $data["city"] = $this->User_model->get_by_city($city);
         $this->load->view("users/show", $data);
@@ -55,7 +55,7 @@ class Users extends CI_Controller
     public
     function group($group)
     {
-        $this->load->view("header");
+        $this->set_header();
         $this->load->model("User_model");
         $this->load->model("Group_model");
         $data["users"] = $this->User_model->get_by_group($group);
@@ -68,7 +68,7 @@ class Users extends CI_Controller
     public
     function login()
     {
-        $this->load->view("header");
+        $this->set_header();
         $this->load->model("User_model");
         $this->load->helper('url');
         $login = $this->input->post('login');
@@ -78,7 +78,7 @@ class Users extends CI_Controller
             $this->load->library('session');
             $user_data = array(
                 'username' => $result['name'],
-                'id' => $result['id']
+                'user_id' => $result['id']
             );
             $this->session->set_userdata($user_data);
             $test = $this->session->userdata('username');
