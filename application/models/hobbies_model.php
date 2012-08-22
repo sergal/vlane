@@ -13,7 +13,7 @@ class Hobbies_model extends CI_Model
         return $hobby->result_array();
     }
 
-    public function get_add($user_id, $text)
+    public function add_hobby($user_id, $text)
     {
         $data = array('user_id' => $user_id, 'text' => $text);
         $this->db->insert('hobbies', $data);
@@ -23,6 +23,7 @@ class Hobbies_model extends CI_Model
     {
         $this->db->delete('hobbies', array('id' => $id));
     }
+
 }
 
 ?>

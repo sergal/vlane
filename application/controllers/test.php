@@ -38,6 +38,20 @@ class test extends CI_Controller
         }
 
     }
+
+    public function send_message($text, $sender, $receiver)
+    {
+        $this->load->model("Message_model");
+        $this->Message_model->send_message($text, $sender, $receiver);
+    }
+
+    public function add_friend($friend_id, $user_id)
+    {
+        $this->load->model('Friends_model');
+        $this->Friends_model->add_friend($friend_id, $user_id);
+    }
+
+
 }
 
 ?>

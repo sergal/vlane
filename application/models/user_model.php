@@ -9,8 +9,10 @@ class User_model extends CI_Model
 
     public function get_user($id)
     {
-        $user = $this->db->get_where('users', array('id' => $id));
-        return $user->row_array();
+        $row = $this->db->get_where('users', array('id' => $id));
+        return $row->row_array();
+        //$user['hobbies']=$this->load->Hobbies_model->get_by_user($user_id);
+
     }
 
     public function get_by_group($group_id)
