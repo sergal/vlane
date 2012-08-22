@@ -4,15 +4,16 @@
  */
 class Users extends Base_Controller
 {
-    public function index(){
+    public function index()
+    {
         $this->load->helper('url');
-        if(isset($_COOKIE['ci_session'])){
+        if (isset($_COOKIE['ci_session'])) {
             redirect('users/show', 'location');
-        }
-        else {
+        } else {
             redirect('users/login', 'location');
         }
     }
+
     //Метод отображения имени пользователя
     public function show($id = null)
     {
@@ -109,10 +110,10 @@ class Users extends Base_Controller
         $id = $this->input->post("fid");
         $this->load->library('session');
         $uid = $this->session->userdata('id');
-        $this->Friends_model->add_friend($id,$uid);
+        $this->Friends_model->add_friend($id, $uid);
         echo "OK";
     }
-    
+
     public function get_friends()
     {
         $this->load->model("Friends_model");
@@ -122,13 +123,12 @@ class Users extends Base_Controller
         $data["user_id"] = $this->session->userdata('id');
         $friends = $this->Friends_model->get_friends($this->session->userdata('user_id'));
         $i = 0;
-        foreach($friends as $fid)
-        {
+        foreach ($friends as $fid) {
             $data["friends"][$i] = $this->User_model->get_user($fid["friend_id"]);
             $data["group"][$i] = $this->Search_model->search_group($data["friends"][$i]["id"]);
             $i++;
         }
-        $this->set_header();
+        $this->set_header(3);
         $this->load->view("users/friends", $data);
         $this->load->view("footer");
     }

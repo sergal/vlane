@@ -2,7 +2,7 @@
 class Base_Controller extends CI_Controller
 {
 
-    public function set_header()
+    public function set_header($active_page = 0)
     {
         $this->load->library('session');
         $this->load->model('Message_model');
@@ -11,6 +11,7 @@ class Base_Controller extends CI_Controller
             $data['messages'] = $messages;
         }
         $data['user_id'] = $this->session->userdata('user_id');
+        $data['active_page'] = $active_page;
         $this->load->view('header', $data);
 
     }

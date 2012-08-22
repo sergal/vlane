@@ -12,7 +12,7 @@ public function process()
         $data["group"][$i] = $this->Search_model->search_group($num["id"]);
         $i++;
     }
-    $this->load->view("header");
+    $this->set_header();
     $this->load->view("users/search_result", $data);
     $this->load->view("footer.php");
 }

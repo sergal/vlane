@@ -4,7 +4,7 @@
     <META CHARSET="UTF-8">
     <title>вЛАНе</title>
     <link href="http://localhost/web/css/bootstrap.css" rel="stylesheet">
-    <link rel="icon" href="http://localhost/application/views/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="http://localhost/application/views/favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 <div class="navbar">
@@ -21,14 +21,16 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     <?php if ($user_id != null) : ?>
-                    <li class="active"><a href="http://localhost/index.php/users/show">Моя страница</a></li>
+                    <li <?php if ($active_page == 0) { echo "class=active"; }?>><a href="http://localhost/index.php/users/show">Моя страница</a></li>
                     <?php endif ?>
-                    <li><a href="http://localhost/index.php/groups/show">Отряды</a></li>
+                    <li <?php if ($active_page == 1) { echo "class=active"; }?>><a href="http://localhost/index.php/groups/show">Отряды</a></li>
                     <?php if ($user_id != null) : ?>
-                    <li><a href="http://localhost/index.php/messages/show/<?php echo $user_id; ?>">Сообщения<?php if ($messages > 0) {
-                        echo ' (' . $messages . ')';}
+                    <li <?php if ($active_page == 2) { echo "class=active"; }?>><a
+                        href="http://localhost/index.php/messages/show/<?php echo $user_id; ?>">Сообщения<?php if ($messages > 0) {
+                        echo ' (' . $messages . ')';
+                    }
                         ?>
-                        <li><a href="http://localhost/index.php/users/get_friends">Друзья</a></li>
+                        <li <?php if ($active_page == 3) { echo "class=active"; }?>><a href="http://localhost/index.php/users/get_friends">Друзья</a></li>
                     </a></li><?php endif ?>
                 </ul>
                 <form class="navbar-search pull-left" method="post" action="http://localhost/index.php/search/process">
