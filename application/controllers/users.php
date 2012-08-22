@@ -2,18 +2,17 @@
 /*
  * Контроллер информации о пользователе
  */
-class Users extends Base_Controller
+class Users extends CI_Controller
 {
-    public function index()
-    {
+    public function index(){
         $this->load->helper('url');
-        if (isset($_COOKIE['ci_session'])) {
+        if(isset($_COOKIE['ci_session'])){
             redirect('users/show', 'location');
-        } else {
+        }
+        else {
             redirect('users/login', 'location');
         }
     }
-
     //Метод отображения имени пользователя
     public function show($id = null)
     {
@@ -21,7 +20,7 @@ class Users extends Base_Controller
             $this->load->library('session');
             $id = $this->session->userdata('user_id');
         }
-        $this->set_header();
+        $this->load->view("header");
         $this->load->model("User_model");
         $this->load->model("Group_model");
         $data["user"] = $this->User_model->get_user($id);
@@ -31,9 +30,10 @@ class Users extends Base_Controller
     }
 
 //Метод отображения школы
-    public function school($name_school)
+    public
+    function school($name_school)
     {
-        $this->set_header();
+        $this->load->view("header");
         $this->load->model("User_model");
         $data["school"] = $this->User_model->get_by_school($name_school);
         $this->load->view("users/show", $data);
@@ -41,9 +41,10 @@ class Users extends Base_Controller
     }
 
 //Метод отображения города
-    public function city($city)
+    public
+    function city($city)
     {
-        $this->set_header();
+        $this->load->view("header");
         $this->load->model("User_model");
         $data["city"] = $this->User_model->get_by_city($city);
         $this->load->view("users/show", $data);
@@ -51,9 +52,10 @@ class Users extends Base_Controller
     }
 
 //Метод отображения отряда
-    public function group($group)
+    public
+    function group($group)
     {
-        $this->set_header();
+        $this->load->view("header");
         $this->load->model("User_model");
         $this->load->model("Group_model");
         $data["users"] = $this->User_model->get_by_group($group);
@@ -63,9 +65,10 @@ class Users extends Base_Controller
     }
 
 //Метод логина
-    public function login()
+    public
+    function login()
     {
-        $this->set_header();
+        $this->load->view("header");
         $this->load->model("User_model");
         $this->load->helper('url');
         $login = $this->input->post('login');
@@ -75,17 +78,20 @@ class Users extends Base_Controller
             $this->load->library('session');
             $user_data = array(
                 'username' => $result['name'],
-                'user_id' => $result['id'],
+                'id' => $result['id']
             );
             $this->session->set_userdata($user_data);
-            redirect('/users/show/' . $result['id'], 'location');
+            $test = $this->session->userdata('username');
+            \
+                redirect('/users/show/' . $result['id'], 'location');
         } else {
             $this->load->view('users/login');
         }
         $this->load->view("footer");
     }
 
-    public function logout()
+    public
+    function logout()
     {
         $this->load->helper('url');
         $this->load->helper('cookie');
