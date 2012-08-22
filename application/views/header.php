@@ -23,8 +23,8 @@
                     <li><a href="components.html#">Link</a></li>
                     <li><a href="components.html#">Link</a></li>
                 </ul>
-                <form class="navbar-search pull-left" action="components.html">
-                    <input type="text" class="search-query span2" placeholder="Search">
+                <form class="navbar-search pull-left" method="post" action="http://localhost/index.php/search/process">
+                    <input type="text" name="txt" class="search-query span2" placeholder="Search">
                 </form>
                 <ul class="nav pull-right">
                     <li><a href="http://localhost/index.php/users/logout">Выйти</a></li>
