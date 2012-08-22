@@ -4,6 +4,15 @@
  */
 class Users extends CI_Controller
 {
+    public function index(){
+        if(isset($_COOKIE['ci_session'])){
+            $this->load->helper('url');
+            redirect('users/show', 'location');
+        }
+        else {
+            redirect('users/login', 'location');
+        }
+    }
     //Метод отображения имени пользователя
     public function show($id = null)
     {
