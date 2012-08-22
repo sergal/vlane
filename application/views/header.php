@@ -36,7 +36,7 @@ $uid = $this->session->userdata('user_id'); ?>
                         <li <?php if ($active_page == 3) { echo "class=active"; }?>><a href="<?php echo site_url("users/get_friends"); ?>">Друзья</a></li>
                     </a></li><?php endif ?>
                 </ul>
-                <form class="navbar-search pull-left" method="post" action="http://localhost/index.php/search/process">
+                <form class="navbar-search pull-left" method="post" action="<?php echo site_url('search/process') ?>">
                     <input type="text" name="txt" class="search-query span2" placeholder="Поиск людей">
                 </form>
                 <?php if ($user_id != null) : ?>
