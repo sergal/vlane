@@ -25,8 +25,10 @@
                     <li><a href="http://localhost/index.php/groups/show">Отряды</a></li>
                     <?php if ($user_id != null) : ?>
                     <li><a href="http://localhost/index.php/messages/show/<?php echo $user_id; ?>">Сообщения<?php if ($messages > 0) {
-                        echo ' (' . $messages . ')';
-                    }?></a></li><?php endif ?>
+                        echo ' (' . $messages . ')';}
+                        ?>
+                        <li><a href="http://localhost/index.php/users/friends">Друзья</a></li>
+                    </a></li><?php endif ?>
                 </ul>
                 <form class="navbar-search pull-left" method="post" action="http://localhost/index.php/search/process">
                     <input type="text" name="txt" class="search-query span2" placeholder="Поиск">
