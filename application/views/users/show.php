@@ -9,11 +9,11 @@
         </p>
 
         <p>
-            <?php  if ($user['id'] == $user_id) : ?>
-            <a href="<?php echo site_url("/messages/create") . "/" . $user["id"]; ?>" class="btn">Отправить
-                сообщение</a>
-            <? endif ?>
-        </p>
+        <?php if ($user['id'] != $user_id) : ?>
+        <a href="<?php echo site_url("/messages/create") . "/" . $user["id"]; ?>" class="btn">Отправить
+            сообщение</a>
+        <?php endif ?>
+    </p>
     </div>
     <div class="span8">
         <h2>
@@ -21,6 +21,7 @@
             echo $user["name"];
             ?>
         </h2>
+
         <?php
         echo $user["city"];
         echo"<br>";
@@ -28,9 +29,10 @@
         echo"<br>";
         echo $user["school"];
         echo "<br>" . "<br>";
-        echo "<h3></h3>";
-        echo "<strong>" . "Список отрядов :" . "</strong>" . "<br>" . "<br>";
         ?>
+
+        <h3></h3>
+        <strong>Список отрядов:</strong><br><br>
         <ul>
             <?php
             foreach ($groups as $group) {
@@ -39,10 +41,10 @@
             }
             if (($user_id != 0) && ($user_id != $user["id"]) && ($check_friend)) : ?>
                 <br>
-                <form action='../add_friend' method='post'>
+                <form action="../add_friend" method="post">
                     <input type="submit" value="Добавить в друзья" class="btn">
-                    <input type="hidden" name="fid" value="<?php echo $user["id"] ?>"></form>";
+                    <input type="hidden" name="fid" value="<?php echo $user["id"] ?>"></form>
                 <?php endif ?>
-            <ul>
+        </ul>
     </div>
 </div>

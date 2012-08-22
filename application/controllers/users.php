@@ -27,7 +27,7 @@ class Users extends Base_Controller
         $this->load->model("Friends_model");
         $data["user"] = $this->User_model->get_user($id);
         $data["groups"] = $this->Group_model->get_by_user($id);
-        $data["user_id"] = $this->session->userdata('id');
+        $data["user_id"] = $this->session->userdata('user_id');
         $data["check_friend"] = $this->Friends_model->check_friend($id, $data["user_id"]);
         $this->load->view("users/show", $data);
         $this->load->view("footer");
