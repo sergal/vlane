@@ -18,7 +18,7 @@ class Users extends Base_Controller
     {
         $this->load->library('session');
         if ($id == null) {
-            $id = $this->session->userdata('id');
+            $id = $this->session->userdata('user_id');
         }
         $this->set_header();
         $this->load->model("User_model");
