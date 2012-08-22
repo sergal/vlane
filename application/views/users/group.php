@@ -1,14 +1,14 @@
 <div class="row">
     <div class="span12">
-        <h1><strong>
-            <center>отряд <?php
+        <h1><p align="center"><strong>
+            отряд <?php
            echo $group["name"];
                 echo " ";
                 echo "(";
                 echo $group["nickname"];
                 echo ")";
 ?>
-        </strong></center></h1>
+        </strong></p></h1>
     </div>
     <div class="span6">
         <ul>
