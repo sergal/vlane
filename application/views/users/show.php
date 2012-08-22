@@ -1,7 +1,7 @@
 <div class="row" xmlns="http://www.w3.org/1999/html">
     <div class="span4">
         <p>
-            <img src="/web/img/<?php echo $user["photo"] ?>" alt="фото">
+            <img src="/web/img/<?php if(empty($user['photo'])){ echo 'no_avatar.jpg'; } else {echo $user["photo"]; } ?>" alt="фото">
         </p>
 
         <p>
