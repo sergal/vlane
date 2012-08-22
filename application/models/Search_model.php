@@ -11,7 +11,7 @@ class Search_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('users');
-        $this->db->like('name', '$like');
+        $this->db->like('name', $like);
         $name = $this->db->get();
         return $name->result_array();
     }
