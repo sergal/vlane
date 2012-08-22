@@ -6,11 +6,11 @@ public function show()
     $this->load->model("Season_model");
     $data["seasons"] = $this->Season_model->get_all_seasons();
     $this->set_header();
-    $this->load->view("users/seasons", $data);
+    $this->load->view("groups/show", $data);
     $this->load->view("footer");
 }
 
-public function show_group($id)
+public function season($id)
 {
 $this->load->model("Group_model");
 $data = array();
