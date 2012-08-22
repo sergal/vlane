@@ -7,6 +7,7 @@
                         foreach ($groups as $name) {
                             echo "<li><a href='../../users/group/".$name["id"]."'>";
                             echo $name["name"];
+                            echo " ";
                             echo "(" . $name["nickname"] . ")";
                             echo "</a></li>";
                         }
