@@ -28,10 +28,12 @@
                     <input type="text" name="txt" class="search-query span2" placeholder="Search">
                 </form>
                     <?php endif ?>
+<?php if(isset($_COOKIE['ci_session'])) :?>
                 <ul class="nav pull-right">
                     <li><a href="http://localhost/index.php/users/logout">Выйти</a></li>
 
                 </ul>
+                <?php endif ?>
             </div>
             <!-- /.nav-collapse -->
         </div>
