@@ -4,15 +4,16 @@
  */
 class Users extends Base_Controller
 {
-    public function index(){
+    public function index()
+    {
         $this->load->helper('url');
-        if(isset($_COOKIE['ci_session'])){
+        if (isset($_COOKIE['ci_session'])) {
             redirect('users/show', 'location');
-        }
-        else {
+        } else {
             redirect('users/login', 'location');
         }
     }
+
     //Метод отображения имени пользователя
     public function show($id = null)
     {
@@ -27,7 +28,7 @@ class Users extends Base_Controller
         $data["user"] = $this->User_model->get_user($id);
         $data["groups"] = $this->Group_model->get_by_user($id);
         $data["user_id"] = $this->session->userdata('id');
-        $data["check_friend"] = $this->Friends_model->check_friend($id,$data["user_id"]);
+        $data["check_friend"] = $this->Friends_model->check_friend($id, $data["user_id"]);
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
@@ -112,9 +113,8 @@ class Users extends Base_Controller
         $id = $this->input->post("fid");
         $this->load->library('session');
         $uid = $this->session->userdata('user_id');
-        if ($this->Friends_model->check_friend($id,$uid))
-        {
-        $this->Friends_model->add_friend($id,$uid);
+        if ($this->Friends_model->check_friend($id, $uid)) {
+            $this->Friends_model->add_friend($id, $uid);
         }
         redirect("users/get_friends");
     }
@@ -126,24 +126,25 @@ class Users extends Base_Controller
         $id = $this->input->post("fid");
         $this->load->library('session');
         $uid = $this->session->userdata('user_id');
-        $this->Friends_model->delete_friend($id,$uid);
+        $this->Friends_model->delete_friend($id, $uid);
         redirect("users/get_friends");
     }
-    
+
     public function get_friends()
     {
         $this->load->model("Friends_model");
         $this->load->model("User_model");
         $this->load->model("Search_model");
         $this->load->library('session');
-        $data["user_id"] = $this->session->userdata('id');
+        $data["user_id"] = $this->session->userdata('user_id');
         $friends = $this->Friends_model->get_friends($this->session->userdata('user_id'));
         $i = 0;
-        foreach($friends as $fid)
-        {
-            $data["friends"][$i] = $this->User_model->get_user($fid["friend_id"]);
-            $data["group"][$i] = $this->Search_model->search_group($data["friends"][$i]["id"]);
-            $i++;
+        if (!empty($friends)) {
+            foreach ($friends as $fid) {
+                $data["friends"][$i] = $this->User_model->get_user($fid["friend_id"]);
+                $data["group"][$i] = $this->Search_model->search_group($data["friends"][$i]["id"]);
+                $i++;
+            }
         }
         $this->set_header(3);
         $this->load->view("users/friends", $data);
