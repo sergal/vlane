@@ -9,6 +9,7 @@ class Users extends CI_Controller
     {
         $this->load->view("header");
         $this->load->model("User_model");
+        $this->load->model("Group_model");
         $data["user"] = $this->User_model->get_user($id);
         $data["groups"] = $this->Group_model->get_by_user($id);
         $this->load->view("users/show", $data);
@@ -48,21 +49,24 @@ class Users extends CI_Controller
     }
 
     //Метод логина
-    public function login(){
+    public function login()
+    {
         $this->load->view("header");
         $this->load->model("User_model");
+        $this->load->helper('url');
         $login = $this->input->post('login');
-        $pass = $this->input->post('pass');
-        $result['pass'] = $this->User_model->get_by_login($login);
-        if($result['pass']==$pass&&$pass!=0){
-            redirect('/users/show/'.$result['id'], 'location');
+        $pass = $this->input->post('password');
+        $result = $this->User_model->get_by_login($login);
+        if ($result['password'] == $pass && $pass != 0) {
             $this->load->library('session');
             $user_data = array(
-                'username'  => $result['name']
+                'username' => $result['name']
             );
             $this->session->set_userdata($user_data);
-        }
-        else{
+            $test = $this->session->userdata('username');
+            echo $test; die;
+            redirect('/users/show/' . $result['id'], 'location');
+        } else {
             $this->load->view('users/login');
         }
         $this->load->view("footer");
