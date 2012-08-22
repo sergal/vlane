@@ -22,12 +22,11 @@
                     <?php if (isset($_COOKIE['ci_session'])) : ?>
                     <li class="active"><a href="http://localhost/index.php/users/show">Моя страница</a></li>
                     <?php endif ?>
-                    <li><a href="http://localhost/index.php/users/groups/show">Отряды</a></li>
-                    <li><a href="">Link</a></li>
-                    <li><a href="">Link</a></li>
+                    <li><a href="http://localhost/index.php/users/groups">Отряды</a></li>
+                    <li><a href="">О разработчиках</a></li>
                 </ul>
                 <form class="navbar-search pull-left" method="post" action="http://localhost/index.php/search/process">
-                    <input type="text" name="txt" class="search-query span2" placeholder="Search">
+                    <input type="text" name="txt" class="search-query span2" placeholder="Поиск">
                 </form>
                 <?php if (isset($_COOKIE['ci_session'])) : ?>
 

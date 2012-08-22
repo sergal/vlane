@@ -101,4 +101,5 @@ class Users extends CI_Controller
             redirect('users/login', 'location');
         }
     }
+
 }
