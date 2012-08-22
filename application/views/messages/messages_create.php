@@ -9,7 +9,7 @@
     </div>
     <div class="span8">
         <?php
-        echo form_textarea(array('name' => 'text', 'class' => 'input-xlarge', 'Placeholder' => 'Ваше сообщение'));
+        echo form_textarea(array('name' => 'text', 'class' => 'input-xlarge', 'Placeholder' => 'Ваше сообщение здесь'));
         echo "<br>";
         echo form_submit(array('value' => 'Отправить', 'class' => 'btn btn-primary'));
         echo form_close();
