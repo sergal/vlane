@@ -1,5 +1,5 @@
 <?php
-class Groups extends CI_Controller
+class Groups extends Base_Controller
 {
 public function show()
 {

@@ -1,5 +1,5 @@
 <?php
-class Search extends CI_Controller
+class Search extends Base_Controller
 {
 
 public function process()

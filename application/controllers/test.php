@@ -1,6 +1,6 @@
 <?php
 
-class test extends CI_Controller
+class test extends Base_Controller
 {
     public function count_unread_messages($user_id)
     {
