@@ -34,7 +34,7 @@
          }
                   ?><br><form action="../../friends/add/" method="post">
              <input type="submit" value="Добавить в друзья" class="btn-large">
-         <input type="hidden" value="<?php echo $user["id"] ?>"></form>
+         <input type="hidden" name="fid" value="<?php echo $user["id"] ?>"></form>
                           <ul>
      </div>
 </div>
