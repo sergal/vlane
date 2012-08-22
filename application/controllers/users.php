@@ -26,7 +26,6 @@ class Users extends CI_Controller
         $data["user"] = $this->User_model->get_user($id);
         $data["groups"] = $this->Group_model->get_by_user($id);
         $data["uid"] = $this->session->userdata('id');
-        $data["friend"] = false; //затычка
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
@@ -113,7 +112,7 @@ class Users extends CI_Controller
         $this->Friends_model->add_friend($id,$uid);
         echo "OK";
     }
-
+    
     public function get_friends()
     {
         $this->load->model("Friends_model");
@@ -133,5 +132,4 @@ class Users extends CI_Controller
         $this->load->view("users/friends", $data);
         $this->load->view("footer");
     }
-
 }

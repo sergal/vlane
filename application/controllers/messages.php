@@ -1,5 +1,5 @@
 <?php
-class Messages extends CI_Controller
+class Messages extends Base_Controller
 {
     public function create($user_id)
     {
