@@ -24,11 +24,11 @@ class Season_model extends CI_Model
         $season = $this->db->get_where('seasons', array('type' => $type));
         return $season->row_array();
     }
-    public function get_seasons()
+
+    public function get_all_seasons()
     {
-        $seasons = $this->db->get("seasons");
-        return $seasons->result_array();
+    $seasons = $this->db->get("seasons");
+    return $seasons->result_array();
     }
 }
-
 ?>
