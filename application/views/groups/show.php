@@ -1,7 +1,7 @@
 <div class="row">
     <div class="span12">
         <h1><strong>
-            <center>Отряды</center></strong></h1>
+            <center>Сезоны</center></strong></h1>
         <ol>
             <?php
             foreach ($seasons as $season) {

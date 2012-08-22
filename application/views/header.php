@@ -32,7 +32,7 @@
                     </a></li><?php endif ?>
                 </ul>
                 <form class="navbar-search pull-left" method="post" action="http://localhost/index.php/search/process">
-                    <input type="text" name="txt" class="search-query span2" placeholder="Поиск">
+                    <input type="text" name="txt" class="search-query span2" placeholder="Поиск людей">
                 </form>
                 <?php if ($user_id != null) : ?>
 
