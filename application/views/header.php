@@ -4,6 +4,7 @@
     <META CHARSET="UTF-8">
     <title>вЛАНе</title>
     <link href="http://localhost/web/css/bootstrap.css" rel="stylesheet">
+    <link rel="icon" href="http://localhost/application/views/favicon.ico" type="image/x-icon" />
 </head>
 <body>
 <div class="navbar">
@@ -27,7 +28,7 @@
                     <li><a href="http://localhost/index.php/messages/show/<?php echo $user_id; ?>">Сообщения<?php if ($messages > 0) {
                         echo ' (' . $messages . ')';}
                         ?>
-                        <li><a href="http://localhost/index.php/users/friends">Друзья</a></li>
+                        <li><a href="http://localhost/index.php/users/get_friends">Друзья</a></li>
                     </a></li><?php endif ?>
                 </ul>
                 <form class="navbar-search pull-left" method="post" action="http://localhost/index.php/search/process">
