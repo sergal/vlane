@@ -16,8 +16,8 @@ class Users extends CI_Controller
     //Метод отображения имени пользователя
     public function show($id = null)
     {
+        $this->load->library('session');
         if ($id == null) {
-            $this->load->library('session');
             $id = $this->session->userdata('id');
         }
         $this->load->view("header");
@@ -25,6 +25,7 @@ class Users extends CI_Controller
         $this->load->model("Group_model");
         $data["user"] = $this->User_model->get_user($id);
         $data["groups"] = $this->Group_model->get_by_user($id);
+        $data["uid"] = $this->session->userdata('id');
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
@@ -100,6 +101,16 @@ class Users extends CI_Controller
             $this->session->sess_destroy();
             redirect('users/login', 'location');
         }
+    }
+
+    public function add_friend()
+    {
+        $this->load->model("Friends_model");
+        $id = $this->input->post("fid");
+        $this->load->library('session');
+        $uid = $this->session->userdata('id');
+        $this->Friends_model->add_friend($id,$uid);
+        echo "OK";
     }
 
 }
