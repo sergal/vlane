@@ -4,7 +4,7 @@ class Groups extends CI_Controller
 public function show()
 {
     $this->load->model("Season_model");
-    $data["seasons"] = $this->Season_model->get_seasons();
+    $data["seasons"] = $this->Season_model->get_all_seasons();
     $this->load->view("header");
     $this->load->view("users/seasons", $data);
     $this->load->view("footer");
