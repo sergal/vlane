@@ -6,5 +6,5 @@ echo "<br>";
 echo form_password('password');
 echo "<br>";
 echo form_submit(array('value' => 'Войти', 'class' => 'btn btn-primary'));
-?>
+
 
