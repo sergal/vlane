@@ -5,7 +5,7 @@
                 <ol>
                         <?php
                         foreach ($groups as $name) {
-                            echo "<li><a href='../group/".$name["id"]."'>";
+                            echo "<li><a href='group/".$name["id"]."'>";
                             echo $name["name"];
                             echo "(" . $name["nickname"] . ")";
                             echo "</a></li>";
