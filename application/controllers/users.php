@@ -64,7 +64,7 @@ class Users extends CI_Controller
                 'username' => $result['name']
             );
             $this->session->set_userdata($user_data);
-
+            $test = $this->session->userdata('username');
         } else {
             $this->load->view('users/login');
         }
