@@ -15,7 +15,7 @@ public function season($id)
 $this->load->model("Group_model");
 $data = array();
 $data["groups"] = $this->Group_model->get_groups($id);
-$this->load->view("header");
+$this->set_header();
 $this->load->view("users/groups", $data);
 $this->load->view("footer");
 }
