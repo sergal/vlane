@@ -43,13 +43,15 @@ class Message_model extends CI_Model
         $limit = 20;
         $offset = $page * $limit;
         $statement = array();
+        $this->db->select('messages.*, users.id AS user_id, users.name');
+        $this->db->from('messages');
         if ($received == true) {
             $statement['receiver_id'] = $user_id;
+            $this->db->join('users', 'messages.sender_id = users.id');
         } else {
             $statement['sender_id'] = $user_id;
+            $this->db->join('users', 'messages.receiver_id = users.id');
         }
-        $this->db->select('*');
-        $this->db->from('messages');
         $this->db->where($statement, $limit, $offset);
         $this->db->order_by('created', 'desc');
         $query = $this->db->get();
