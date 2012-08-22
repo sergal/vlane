@@ -5,7 +5,7 @@
         <ol>
             <?php
             foreach ($seasons as $season) {
-                echo "<li><a href='show_group/".$season["id"]."'>";
+                echo "<li><a href='season/".$season["id"]."'>";
                 echo $season["type"]."-".$season["year"];
                 echo "</a></li>";
             }
