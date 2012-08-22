@@ -16,15 +16,16 @@ class Users extends Base_Controller
     //Метод отображения имени пользователя
     public function show($id = null)
     {
+        $this->load->library('session');
         if ($id == null) {
-            $this->load->library('session');
-            $id = $this->session->userdata('user_id');
+            $id = $this->session->userdata('id');
         }
         $this->set_header();
         $this->load->model("User_model");
         $this->load->model("Group_model");
         $data["user"] = $this->User_model->get_user($id);
         $data["groups"] = $this->Group_model->get_by_user($id);
+        $data["uid"] = $this->session->userdata('id');
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
@@ -102,4 +103,33 @@ class Users extends Base_Controller
         }
     }
 
+    public function add_friend()
+    {
+        $this->load->model("Friends_model");
+        $id = $this->input->post("fid");
+        $this->load->library('session');
+        $uid = $this->session->userdata('id');
+        $this->Friends_model->add_friend($id,$uid);
+        echo "OK";
+    }
+    
+    public function get_friends()
+    {
+        $this->load->model("Friends_model");
+        $this->load->model("User_model");
+        $this->load->model("Search_model");
+        $this->load->library('session');
+        $data["uid"] = $this->session->userdata('id');
+        $friends = $this->Friends_model->get_friends($data["uid"]);
+        $i = 0;
+        foreach($friends as $fid)
+        {
+            $data["friends"][$i] = $this->User_model->get_user($fid["friend_id"]);
+            $data["group"][$i] = $this->Search_model->search_group($data["friends"][$i]["id"]);
+            $i++;
+        }
+        $this->load->view("header");
+        $this->load->view("users/friends", $data);
+        $this->load->view("footer");
+    }
 }
