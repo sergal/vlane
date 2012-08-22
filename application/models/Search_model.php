@@ -15,6 +15,15 @@ class Search_model extends CI_Model
         $name = $this->db->get();
         return $name->result_array();
     }
+    public function search_group($id)
+    {$this->db->select('name, nickname');
+        $this->db->from('groups');
+        $this->db->where('id', $id);
+        $group = $this->db->get();
+        return $group->result_array();
+
+
+    }
 
 
 
