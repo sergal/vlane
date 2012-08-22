@@ -1,14 +1,11 @@
-<div class="row">
-    <div class="span12">
-        <h1><strong><center>Моя страница</center></strong></h1>
-    </div>
-</div>
-<div class="row">
+<div class="row" xmlns="http://www.w3.org/1999/html">
      <div class="span4">
-         <?php
-
-         echo '<img src="/web/img/'.$user["photo"].'" alt="фото">';
-         ?>
+         <p>
+            <img src="/web/img/<?php echo $user["photo"] ?>" alt="фото">
+         </p>
+         <p>
+            <a href="http://localhost/index.php/messages/create/<?php echo $user["id"] ?>" class="btn">Отправить сообщение</a>
+         </p>
      </div>
      <div class="span8">
          <h2>

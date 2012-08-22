@@ -24,6 +24,7 @@
                     <?php endif ?>
                     <li><a href="http://localhost/index.php/groups/show">Отряды</a></li>
                     <li><a href="">Сообщения</a></li>
+                    <li><a href="http://localhost/index.php/users/friends">Друзья</a></li>
                 </ul>
                 <form class="navbar-search pull-left" method="post" action="http://localhost/index.php/search/process">
                     <input type="text" name="txt" class="search-query span2" placeholder="Поиск">
