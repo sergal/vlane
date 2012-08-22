@@ -13,10 +13,8 @@ foreach ($friends as $num)
     echo "</td><td>";
     echo $num["class"];
     echo "</td><td>";
-  //  echo $group[$i][0]["name"]." aka ".$group[$i][0]["nickname"];
-    echo "</td><td>";
     echo "
-    <form action='del_friend' method='post'><input type='hidden' name='fid' value='".$num["id"]."'><input type='submit' value='X'></form>";
+    <form action='del_friend' method='post'><input type='hidden' name='fid' value='".$num["id"]."'><input type='submit' class='btn btn-mini' value='X'></form>";
     echo "</td></tr>";
     $i++;
 }
