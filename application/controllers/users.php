@@ -5,8 +5,8 @@
 class Users extends CI_Controller
 {
     public function index(){
+        $this->load->helper('url');
         if(isset($_COOKIE['ci_session'])){
-            $this->load->helper('url');
             redirect('users/show', 'location');
         }
         else {
