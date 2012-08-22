@@ -145,7 +145,7 @@ class Users extends Base_Controller
             $data["group"][$i] = $this->Search_model->search_group($data["friends"][$i]["id"]);
             $i++;
         }
-        $this->set_header();
+        $this->set_header(3);
         $this->load->view("users/friends", $data);
         $this->load->view("footer");
     }

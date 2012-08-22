@@ -6,7 +6,11 @@ class Messages extends Base_Controller
         $this->load->model('Message_model');
         $this->load->library('session');
         $user_id = $this->session->userdata('user_id');
-        $data['messages'] = $this->Message_model->get_messages($user_id, true);
+        $messages = $this->Message_model->get_messages($user_id, true);
+        $data['messages'] = $messages;
+        foreach ($messages as $value){
+            $this->Message_model->mark_as_read($value['id']);
+        }
         $this->load->view('messages/show', $data);
     }
     public function create($user_id)
@@ -19,10 +23,12 @@ class Messages extends Base_Controller
     }
 
     public function send($receiver){
+        $this->load->helper('url');
         $this->load->model('Message_model');
         $this->load->library('session');
         $text = $this->input->post('text');
         $user_id = $this->session->userdata('user_id');
         $this->Message_model->send_message($text, $user_id, $receiver);
+        redirect("messages/show");
     }
 }

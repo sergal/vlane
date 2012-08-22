@@ -3,7 +3,7 @@ foreach ($messages as $elem) : ?>
   <div class="row">
       <p>
       <div class="span4">
-          <?php echo $elem["name"] ?>
+          <?php echo "<a href='".site_url("/users/show")."/".$elem["user_id"]."'>".$elem["name"]."</a>" ?>
           <br>
           <?php echo $elem["created"] ?>
           <br>

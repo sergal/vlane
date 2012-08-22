@@ -34,7 +34,7 @@ class Message_model extends CI_Model
     {
         $this->db->select('status');
         $this->db->from('messages');
-        $this->db->where('receiver_id', $receiver_id);
+        $this->db->where(array('receiver_id' => $receiver_id, 'status' => 0));
         return $this->db->count_all_results();
     }
 
