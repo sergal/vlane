@@ -4,7 +4,7 @@
 $i = 0;
 foreach ($result as $num)
 {
-echo "<tr><td><a href='http://localhost/index.php/users/show/".$num["id"]."'>";
+echo "<tr><td><a href='".site_url("/users/show")."/".$num["id"]."'>";
 echo $num["name"];
 echo "</a></td><td>";
 echo $num["city"];

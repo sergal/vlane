@@ -23,9 +23,11 @@ class Users extends Base_Controller
         $this->set_header();
         $this->load->model("User_model");
         $this->load->model("Group_model");
+        $this->load->model("Friends_model");
         $data["user"] = $this->User_model->get_user($id);
         $data["groups"] = $this->Group_model->get_by_user($id);
         $data["uid"] = $this->session->userdata('id');
+        $data["check_friend"] = $this->Friends_model->check_friend($id,$data["uid"]);
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
@@ -110,7 +112,10 @@ class Users extends Base_Controller
         $id = $this->input->post("fid");
         $this->load->library('session');
         $uid = $this->session->userdata('user_id');
+        if ($this->Friends_model->check_friend($id,$uid))
+        {
         $this->Friends_model->add_friend($id,$uid);
+        }
         redirect("users/get_friends");
     }
 
