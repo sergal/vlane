@@ -54,7 +54,7 @@ class Users extends CI_Controller
         $login = $this->input->post('login');
         $pass = $this->input->post('pass');
         $result['pass'] = $this->User_model->get_by_login($login);
-        if($result['pass']==$pass){
+        if($result['pass']==$pass&&$pass!=0){
             redirect('/users/show/'.$result['id'], 'location');
             $this->load->library('session');
             $user_data = array(
@@ -63,7 +63,8 @@ class Users extends CI_Controller
             $this->session->set_userdata($user_data);
         }
         else{
-            $this->load->view('login');
+            $this->load->view('users/login');
         }
+        $this->load->view("footer");
     }
 }
