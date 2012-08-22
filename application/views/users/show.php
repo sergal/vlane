@@ -27,14 +27,12 @@
          echo "<strong>"."Список отрядов :"."</strong>"."<br>"."<br>";
          ?>
          <ul>
-             <li>
-                 <?php
+                             <?php
          foreach($groups as $group){
-                                  echo "<a href=/users/group/".$group["id"].">".$group["name"]."</a>"." ";
-             echo "(".$group["type"]."-".$group["year"].")";
+                                               echo "<li>"."<a href=/users/group/".$group["id"].">".$group["name"]."</a>"." ";
+             echo "(".$group["type"]."-".$group["year"].")</li>";
          }
                   ?>
-             </li>
-             <ul>
+                          <ul>
      </div>
 </div>
