@@ -18,13 +18,13 @@ class Friends_model extends CI_Model
     }
 
     public function delete_friend($friend_id, $user_id)
-    {
-        $delete_friend = array(
-            'user_id' => $user_id,
-            'friend_id' => $friend_id
-        );
-        $this->db->delete('friends', $delete_friend);
-    }
+{
+    $delete_friend = array(
+        'user_id' => $user_id,
+        'friend_id' => $friend_id
+    );
+    $this->db->delete('friends', $delete_friend);
+}
 
     public function get_friends($user_id)
     {
