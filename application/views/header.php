@@ -19,7 +19,7 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class="active"><a href="http://localhost/index.php/users/show">Моя страница</a></li>
-                    <li><a href="">Отряды</a></li>
+                    <li><a href="http://localhost/index.php/users/groups">Отряды</a></li>
                     <li><a href="">Link</a></li>
                     <li><a href="">Link</a></li>
                 </ul>
