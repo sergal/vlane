@@ -4,16 +4,15 @@
  */
 class Users extends CI_Controller
 {
-    public function index()
-    {
-        $this->load->helper('url');
-        if (isset($_COOKIE['ci_session'])) {
+    public function index(){
+        if(isset($_COOKIE['ci_session'])){
+            $this->load->helper('url');
             redirect('users/show', 'location');
-        } else {
+        }
+        else {
             redirect('users/login', 'location');
         }
     }
-
     //Метод отображения имени пользователя
     public function show($id = null)
     {
@@ -101,14 +100,6 @@ class Users extends CI_Controller
             $this->session->sess_destroy();
             redirect('users/login', 'location');
         }
-    }
-
-    public function groups()
-    {
-        $this->load->model("Group_model");
-        $data = array();
-        $data["groups"]->$this->Group_model->get_groups(2012);
-        $this->load->view("users/groups");
     }
 
 }
