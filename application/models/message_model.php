@@ -40,8 +40,8 @@ class Message_model extends CI_Model
 
     public function get_messages($user_id, $received, $page = 0) //$received = true or false
     {
-        $limit=20;
-        $offset=$page*$limit;
+        $limit = 20;
+        $offset = $page * $limit;
         $statement = array();
         if ($received == true) {
             $statement['receiver_id'] = $user_id;
@@ -51,7 +51,7 @@ class Message_model extends CI_Model
         $this->db->select('*');
         $this->db->from('messages');
         $this->db->where($statement, $limit, $offset);
-        $this->db->order_by('created','desc');
+        $this->db->order_by('created', 'desc');
         $query = $this->db->get();
         return $query->result_array();
     }

@@ -51,7 +51,17 @@ class test extends CI_Controller
         $this->Friends_model->add_friend($friend_id, $user_id);
     }
 
+    public function delete_friend($friend_id, $user_id)
+    {
+        $this->load->model('Friends_model');
+        $this->Friends_model->delete_friend($friend_id, $user_id);
+    }
 
+    public function get_friends($user_id)
+    {
+        $this->load->model("Friends_model");
+        var_dump($this->Friends_model->get_friends($user_id));
+    }
 }
 
 ?>
