@@ -2,13 +2,6 @@
 class Search extends CI_Controller
 {
 
-public function open()
-{
-    $this->load->view("header");
-    $this->load->view("users/search");
-    $this->load->view("footer.php");
-}
-
 public function process()
 {
     $this->load->model("Search_model");

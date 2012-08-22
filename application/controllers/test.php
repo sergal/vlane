@@ -19,7 +19,7 @@ class test extends CI_Controller
     public function get_messages($user_id, $received)
     {
         $this->load->model("Message_model");
-        $this->Message_model->get_messages($user_id, $received);
+        var_dump($this->Message_model->get_messages($user_id, $received));
     }
 
     public function delete_message($id)
