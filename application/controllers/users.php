@@ -5,8 +5,12 @@
 class Users extends CI_Controller
 {
     //Метод отображения имени пользователя
-    public function show($id)
+    public function show($id = null)
     {
+        if ($id == null) {
+            $this->load->library('session');
+            $id = $this->session->userdata('id');
+        }
         $this->load->view("header");
         $this->load->model("User_model");
         $this->load->model("Group_model");
@@ -16,8 +20,9 @@ class Users extends CI_Controller
         $this->load->view("footer");
     }
 
-    //Метод отображения школы
-    public function school($name_school)
+//Метод отображения школы
+    public
+    function school($name_school)
     {
         $this->load->view("header");
         $this->load->model("User_model");
@@ -26,8 +31,9 @@ class Users extends CI_Controller
         $this->load->view("footer");
     }
 
-    //Метод отображения города
-    public function city($city)
+//Метод отображения города
+    public
+    function city($city)
     {
         $this->load->view("header");
         $this->load->model("User_model");
@@ -36,8 +42,9 @@ class Users extends CI_Controller
         $this->load->view("footer");
     }
 
-    //Метод отображения отряда
-    public function group($group)
+//Метод отображения отряда
+    public
+    function group($group)
     {
         $this->load->view("header");
         $this->load->model("User_model");
@@ -48,8 +55,9 @@ class Users extends CI_Controller
         $this->load->view("footer");
     }
 
-    //Метод логина
-    public function login()
+//Метод логина
+    public
+    function login()
     {
         $this->load->view("header");
         $this->load->model("User_model");
@@ -57,27 +65,31 @@ class Users extends CI_Controller
         $login = $this->input->post('login');
         $pass = $this->input->post('password');
         $result = $this->User_model->get_by_login($login);
-        if ($result['password'] == $pass && $pass != 0) {
+        if ($pass != null && $result['password'] == $pass) {
             $this->load->library('session');
             $user_data = array(
                 'username' => $result['name'],
                 'id' => $result['id']
             );
             $this->session->set_userdata($user_data);
-            $test = $this->session->userdata('username');\
-            redirect('/users/show/' . $result['id'], 'location');
+            $test = $this->session->userdata('username');
+            \
+                redirect('/users/show/' . $result['id'], 'location');
         } else {
             $this->load->view('users/login');
         }
         $this->load->view("footer");
     }
-    public function logout(){
+
+    public
+    function logout()
+    {
         $this->load->helper('url');
         $this->load->helper('cookie');
         $this->load->library('session');
-       if($this->input->cookie('ci_session')!=null){
-           $this->session->sess_destroy();
-           $this->load->view('users/login');
-       }
+        if ($this->input->cookie('ci_session') != null) {
+            $this->session->sess_destroy();
+            redirect('users/login', 'location');
+        }
     }
 }
