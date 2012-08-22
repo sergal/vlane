@@ -9,13 +9,14 @@ class Message_model extends CI_Model
 
     public function send_message($text, $sender, $receiver)
     {
-        $time = time();
+        date_default_timezone_set('Asia/Omsk');
+        $time = date('Y-m-d H:i:s');
         $message = array(
             'text' => $text,
             'sender_id' => $sender,
             'receiver_id' => $receiver,
             'status' => '0',
-            'time' => $time
+            'created' => $time
         );
 
         $this->db->insert('messages', $message);
@@ -37,15 +38,21 @@ class Message_model extends CI_Model
         return $this->db->count_all_results();
     }
 
-    public function get_messages($user_id, $received) //$received = true or false
+    public function get_messages($user_id, $received, $page = 0) //$received = true or false
     {
+        $limit = 20;
+        $offset = $page * $limit;
         $statement = array();
         if ($received == true) {
             $statement['receiver_id'] = $user_id;
         } else {
             $statement['sender_id'] = $user_id;
         }
-        $query = $this->db->get_where('messages', $statement);
+        $this->db->select('*');
+        $this->db->from('messages');
+        $this->db->where($statement, $limit, $offset);
+        $this->db->order_by('created', 'desc');
+        $query = $this->db->get();
         return $query->result_array();
     }
 

@@ -27,8 +27,9 @@ class Season_model extends CI_Model
 
     public function get_all_seasons()
     {
-    $seasons = $this->db->get("seasons");
-    return $seasons->result_array();
+        $seasons = $this->db->get("seasons");
+        return $seasons->result_array();
     }
 }
+
 ?>
