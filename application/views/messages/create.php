@@ -2,7 +2,7 @@
     <div class="span4">
         <h1><strong>Новое сообщение</strong></h1>
         <?php
-        echo "Кому :" . $user["name"];
+        echo "Кому: " . $user["name"];
         $this->load->helper('form');
         echo form_open('messages/send/'.$user["id"]);
                 ?>

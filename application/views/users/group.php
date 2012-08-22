@@ -1,7 +1,7 @@
 <div class="row">
     <div class="span12">
         <h1><p align="center"><strong>
-            отряд <?php
+            Отряд <?php
            echo $group["name"];
                 echo " ";
                 echo "(";
@@ -11,7 +11,7 @@
         </strong></p></h1>
     </div>
     <div class="span6">
-        <ul>
+        <ol>
             <?php foreach ($users as $user) : ?>
             <li>
                 <?php
@@ -19,6 +19,6 @@
 ?>
             </li>
             <?php endforeach ?>
-        </ul>
+        </ol>
     </div>
 </div>
