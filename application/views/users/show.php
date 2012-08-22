@@ -31,7 +31,7 @@
                 echo "<li>" . "<a href=/users/group/" . $group["id"] . ">" . $group["name"] . "</a>" . " ";
                 echo "(" . $group["type"] . "-" . $group["year"] . ")</li>";
             }
-            if (($uid != 0) & ($uid != $user["id"])) {
+            if (($user_id != 0) & ($user_id != $user["id"])) {
                 echo "<br><form action='../add_friend' method='post'>
              <input type='submit' value='Добавить в друзья' class='btn'>
          <input type='hidden' name='fid' value='" . $user["id"] . "'></form>";
