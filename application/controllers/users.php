@@ -66,7 +66,6 @@ class Users extends CI_Controller
             );
             $this->session->set_userdata($user_data);
             $test = $this->session->userdata('username');
-
             redirect('/users/show/' . $result['id'], 'location');
         } else {
             $this->load->view('users/login');
