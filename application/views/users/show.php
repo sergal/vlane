@@ -1,6 +1,6 @@
 <div class="row">
     <div class="span12">
-        <h1><strong><center>Моя страница</strong></center></h1>
+        <h1><strong><center>Моя страница</center></strong></h1>
     </div>
 </div>
 <div class="row">
@@ -19,10 +19,10 @@
          echo $user["birthday"];
          echo"<br>";
          echo $user["school"];
-         foreach($groups as $group) {
+         foreach($groups as $group)
+         echo {
              echo $group["name"];
-             echo $group["year"];
-             echo $group["type"];
+             echo "(".$group["type"]."-".$group["year"].")";
          }
                   ?>
      </div>
