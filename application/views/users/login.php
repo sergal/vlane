@@ -5,4 +5,6 @@ echo form_input('login');
 echo "<br>";
 echo form_password('password');
 echo "<br>";
+echo '<div class="btn">';
 echo form_submit('submit','Войти');
+echo '</div>';

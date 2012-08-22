@@ -1,7 +1,12 @@
 <?php
-foreach ($messages as $elem) {
-  echo  '<div class="row" >';
-    echo '<div class="span8">', '$elem["text"]','</div>';
-    echo '<div class="span2">', '$elem["sender_id"]','</div>';
-    echo '<div class="span2">', '$elem["created"]','</div>';
-}
+foreach ($messages as $elem) : ?>
+  <div class="row" >';
+    <div class="span4">
+        <?php echo $elem["name"] ?>
+    <br>
+        <?php echo $elem["created"] ?>
+    </div>;
+    <div class="span8">
+        <?php echo $elem["text"] ?>
+    </div>;
+<?php endforeach ?>

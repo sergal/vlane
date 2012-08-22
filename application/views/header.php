@@ -19,17 +19,21 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class="active"><a href="http://localhost/index.php/users/show">Моя страница</a></li>
-                    <li><a href="components.html#">Отряды</a></li>
-                    <li><a href="components.html#">Link</a></li>
-                    <li><a href="components.html#">Link</a></li>
+                    <li><a href="http://localhost/index.php/users/groups">Отряды</a></li>
+                    <li><a href="">Link</a></li>
+                    <li><a href="">Link</a></li>
                 </ul>
+                <?php if(isset($_COOKIE['ci_session'])) :?>
                 <form class="navbar-search pull-left" method="post" action="http://localhost/index.php/search/process">
                     <input type="text" name="txt" class="search-query span2" placeholder="Search">
                 </form>
+                    <?php endif ?>
+<?php if(isset($_COOKIE['ci_session'])) :?>
                 <ul class="nav pull-right">
                     <li><a href="http://localhost/index.php/users/logout">Выйти</a></li>
 
                 </ul>
+                <?php endif ?>
             </div>
             <!-- /.nav-collapse -->
         </div>
