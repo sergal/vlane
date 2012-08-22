@@ -1,6 +1,6 @@
 <?php
 
-class Test extends CI_Controller
+class test extends CI_Controller
 {
     public function count_unread_messages($user_id)
     {
@@ -9,16 +9,34 @@ class Test extends CI_Controller
         echo $count;
     }
 
-    public function mark_as_read($message_id)
+    public function search_name($like)
     {
-        $this->load->model("Message_model");
-        $this->Message_model->mark_as_read($message_id);
+        $this->load->model("Search_model");
+        $name = $this->Search_model->search_name($like);
+        echo $name;
     }
 
     public function get_messages($user_id, $received)
     {
         $this->load->model("Message_model");
         $this->Message_model->get_messages($user_id, $received);
+    }
+
+    public function delete_message($id)
+    {
+        $this->load->model("Message_model");
+        $this->Message_model->delete_message($id);
+    }
+
+    public function get_groups($season_id)
+    {
+        $this->load->model('Group_model');
+        $groups = $this->Group_model->get_groups($season_id);
+        foreach ($groups as $elem) {
+            echo $elem['id'], "<br>";
+            echo $elem['name'], "<br>";
+        }
+
     }
 }
 

@@ -23,4 +23,10 @@ class Group_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function get_groups($season_id)
+    {
+        $group = $this->db->get_where('groups', array('season_id' => $season_id));
+        return $group->result_array();
+    }
 }
