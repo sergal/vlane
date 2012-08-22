@@ -1,4 +1,3 @@
-<meta charset="UTF-8">
 <?php
 /*
  * Контроллер информации о пользователе
@@ -65,7 +64,7 @@ class Users extends CI_Controller
                 'id' => $result['id']
             );
             $this->session->set_userdata($user_data);
-            $test = $this->session->userdata('username');
+            $test = $this->session->userdata('username');\
             redirect('/users/show/' . $result['id'], 'location');
         } else {
             $this->load->view('users/login');
