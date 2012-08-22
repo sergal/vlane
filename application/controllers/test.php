@@ -38,6 +38,14 @@ class test extends CI_Controller
         }
 
     }
+
+    public function add_friend($friend_id, $user_id)
+    {
+        $this->load->model('Friends_model');
+        $this->Friends_model->add_friend($friend_id, $user_id);
+    }
+
+
 }
 
 ?>
