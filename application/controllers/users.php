@@ -106,11 +106,23 @@ class Users extends Base_Controller
     public function add_friend()
     {
         $this->load->model("Friends_model");
+        $this->load->helper('url');
         $id = $this->input->post("fid");
         $this->load->library('session');
         $uid = $this->session->userdata('id');
         $this->Friends_model->add_friend($id,$uid);
-        echo "OK";
+        redirect("users/get_friends");
+    }
+
+    public function del_friend()
+    {
+        $this->load->model("Friends_model");
+        $this->load->helper('url');
+        $id = $this->input->post("fid");
+        $this->load->library('session');
+        $uid = $this->session->userdata('id');
+        $this->Friends_model->delete_friend($id,$uid);
+        redirect("users/get_friends");
     }
     
     public function get_friends()
