@@ -7,14 +7,18 @@ class Message_model extends CI_Model
         parent::__construct();
     }
 
-    public function send_message($text, $server, $reciver)
+    public function send_message($text, $server, $receiver)
     {
-        $data = array(
-            'text' => '$text',
-            'server' => '$server',
-            'reciver' => '$reciver'
+        $time = time();
+        $message = array(
+            'text' => $text,
+            'server_id' => $server,
+            'receiver_id' => $receiver,
+            'status' => '0',
+            'time' => $time
         );
 
-        $this->db->insert('mytable', $data);
+        $this->db->insert('messages', $message);
 
     }
+}
