@@ -1,4 +1,5 @@
 <?php
+//test
 class Friends_model extends CI_Model
 {
     public function __construct()
@@ -51,4 +52,5 @@ class Friends_model extends CI_Model
         $friends = $this->db->get();
         return $friends->result_array();
     }
+
 }
