@@ -17,9 +17,13 @@ class Users extends Base_Controller
     //Метод отображения имени пользователя
     public function show($id = null)
     {
+		$this->load->helper('url');
         $this->load->library('session');
         if ($id == null) {
             $id = $this->session->userdata('user_id');
+			if($id==null){
+			redirect('users/login', 'location');
+			die;
         }
         $this->set_header();
         $this->load->model("User_model");
