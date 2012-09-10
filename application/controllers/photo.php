@@ -9,21 +9,37 @@ class Photo extends Base_Controller
 			$this->load->view("footer", $data);
 	}
 		public function add(){
-			$this->load->helper('url');
-			$this->load->library('session');
-			$this->load->model("Photo_model");
-			$uid = $this->session->userdata('user_id');
-			$photo = $this->Photo_model->get_photo($uid);
-			unlink('http://vlane.net/web/img/'.$photo);
-			if(count($_FILES)){
-				if(!($_FILES['photo']['size'])){
-					redirect('photo/add_photo', 'location');
-				} else {
-					$newname = 'http://vlane.net/img/'.md5(time().($_FILES['photo']['name']);
-					move_uploaded_file($FILES['photo']['tmp_name'],$newname);
-					$this->Photo_model->add_photo($newname,$uid);
-					redirect('users/show', 'location');
-				}
+		$config['upload_path'] = './web/img/';
+		$config['encrypt_name'] = true;
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '';
+		$config['max_width']  = '';
+		$config['max_height']  = '';
+
+		$this->load->library('upload', $config);
+		$this->load->library('session');
+		$this->load->model('Photo_model');
+		$this->load->model('User_model');
+		$uid = $this->session->userdata('user_id');
+		$photo_arr = $this->User_model->get_user($uid);
+		$photo = $photo_arr['photo'];
+		$this->load->helper('file');
+		$this->load->helper('url');
+		if ( ! $this->upload->do_upload())
+		{
+			
+			$this->load->view('photo');
+			
+		}
+		else
+		{
+			if(file_exists('.web/img/'.$photo)){
+			unlink('./web/img/'.$photo);
 			}
+			$arr = $this->upload->data();
+			$new = $arr['file_name'];
+			$this->Photo_model->add_photo($new, $uid);
+			redirect('users/show', 'location');
+		}
 		}
 	}

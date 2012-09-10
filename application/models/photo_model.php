@@ -1,5 +1,5 @@
 <?php
-class User_model extends CI_Model
+class Photo_model extends CI_Model
 {
     public function __construct()
     {
@@ -9,10 +9,9 @@ class User_model extends CI_Model
 
     public function get_photo($id) //id in user table
     {
-        $this->db->select('photo');
         $this->db->from('users');
         $this->db->where('id', $id);
-        $photo = $this->get();
+        $photo = $this->db->get();
         return $photo;
     }
 
@@ -21,7 +20,7 @@ class User_model extends CI_Model
         $this->db->select('photo');
         $this->db->from('users');
         $this->db->where('id', $id);
-        $first_photo = $this->get();
+        $first_photo = $this->db->get();
 
         $photo = array('photo' => $photo_name);
         $this->db->where('id', $id);
@@ -30,7 +29,7 @@ class User_model extends CI_Model
         $this->db->select('photo');
         $this->db->from('users');
         $this->db->where('id', $id);
-        $last_photo = $this->get();
+        $last_photo = $this->db->get();
         if ($first_photo != $last_photo) {
             return true;
         } else return false;

@@ -21,10 +21,7 @@ class Users extends Base_Controller
         $this->load->library('session');
         if ($id == null) {
             $id = $this->session->userdata('user_id');
-			if($id==null){
-			redirect('users/login', 'location');
-			die;
-        }
+			}
         $this->set_header();
         $this->load->model("User_model");
         $this->load->model("Group_model");
@@ -36,10 +33,10 @@ class Users extends Base_Controller
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
+	
 
 //Метод отображения школы
-    public
-    function school($name_school)
+    public function school($name_school)
     {
         $this->set_header();
         $this->load->model("User_model");
@@ -49,8 +46,7 @@ class Users extends Base_Controller
     }
 
 //Метод отображения города
-    public
-    function city($city)
+    public function city($city)
     {
         $this->set_header();
         $this->load->model("User_model");
@@ -60,8 +56,7 @@ class Users extends Base_Controller
     }
 
 //Метод отображения отряда
-    public
-    function group($group)
+    public function group($group)
     {
         $this->set_header();
         $this->load->model("User_model");
@@ -73,8 +68,7 @@ class Users extends Base_Controller
     }
 
 //Метод логина
-    public
-    function login()
+    public function login()
     {
         $this->set_header();
         $this->load->model("User_model");
@@ -98,8 +92,7 @@ class Users extends Base_Controller
         $this->load->view("footer");
     }
 
-    public
-    function logout()
+    public function logout()
     {
         $this->load->helper('url');
         $this->load->helper('cookie');

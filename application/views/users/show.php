@@ -9,7 +9,7 @@
         </p>
 
         <p>
-        <?php if ($user['id'] != $user_id) : ?>
+        <?php if ($user['id'] != $user_id&&$user['id']!=null) : ?>
         <a href="<?php echo site_url("/messages/create") . "/" . $user["id"]; ?>" class="btn">Отправить
             сообщение</a>
         <?php endif ?>
