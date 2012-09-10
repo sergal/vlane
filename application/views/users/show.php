@@ -11,7 +11,7 @@
 		<p><a href="<?php echo site_url("photo") ?>" class="btn"><i class="icon-user"></i> Сменить фотографию</a>
         <?php endif ?>
 		<p>
-        <?php if ($user['id'] != $user_id&&$user['id']!=null) : ?>
+        <?php if ($user['id'] != $user_id&&$logged_in==true) : ?>
         <a href="<?php echo site_url("/messages/create") . "/" . $user["id"]; ?>" class="btn">Отправить
             сообщение</a>
         <?php endif ?>

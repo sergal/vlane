@@ -29,6 +29,7 @@ class Users extends Base_Controller
         $data["user"] = $this->User_model->get_user($id);
         $data["groups"] = $this->Group_model->get_by_user($id);
         $data["user_id"] = $this->session->userdata('user_id');
+		$data["logged_in"] = $this->session->userdata('logged_in');		
         $data["check_friend"] = $this->Friends_model->check_friend($id, $data["user_id"]);
         $this->load->view("users/show", $data);
         $this->load->view("footer");
@@ -80,7 +81,8 @@ class Users extends Base_Controller
             $this->load->library('session');
             $user_data = array(
                 'username' => $result['name'],
-                'user_id' => $result['id']
+                'user_id' => $result['id'],
+				'logged_in' => true
             );
             $this->session->set_userdata($user_data);
             $test = $this->session->userdata('username');

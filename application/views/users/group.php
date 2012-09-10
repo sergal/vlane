@@ -15,7 +15,7 @@
             <?php foreach ($users as $user) : ?>
             <li>
                 <?php
-                echo" <a href=/users/show/".$user["id"].">".$user["name"]."</a>";
+                echo '<a href="'.site_url("/users/show/").'/'.$user["id"].'">'.$user["name"].'</a>';
 ?>
             </li>
             <?php endforeach ?>
