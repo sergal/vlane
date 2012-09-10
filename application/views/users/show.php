@@ -1,14 +1,16 @@
 <div class="row" xmlns="http://www.w3.org/1999/html">
     <div class="span4">
         <p>
-            <img src="/web/img/<?php if (empty($user['photo'])) {
+            <img src="<?php echo base_url() ?>web/img/<?php if (empty($user['photo'])) {
                 echo 'no_avatar.jpg';
             } else {
                 echo $user["photo"];
             } ?>" alt="фото">
         </p>
-
-        <p>
+		<?php if($user['id'] == $user_id) : ?>
+		<p><a href="<?php echo site_url("photo") ?>" class="btn"><i class="icon-user"></i> Сменить фотографию</a>
+        <?php endif ?>
+		<p>
         <?php if ($user['id'] != $user_id&&$user['id']!=null) : ?>
         <a href="<?php echo site_url("/messages/create") . "/" . $user["id"]; ?>" class="btn">Отправить
             сообщение</a>
