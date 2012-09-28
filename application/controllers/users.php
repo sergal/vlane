@@ -85,8 +85,7 @@ class Users extends Base_Controller
 				'logged_in' => true
             );
             $this->session->set_userdata($user_data);
-            $test = $this->session->userdata('username');
-            \
+            $this->session->userdata('username');
                 redirect('/users/show/' . $result['id'], 'location');
         } else {
             $this->load->view('users/login');

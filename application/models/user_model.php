@@ -12,7 +12,6 @@ class User_model extends CI_Model
         $row = $this->db->get_where('users', array('id' => $id));
         return $row->row_array();
         //$user['hobbies']=$this->load->Hobbies_model->get_by_user($user_id);
-
     }
 
     public function get_by_group($group_id)
