@@ -22,11 +22,12 @@ class Messages extends Base_Controller
         $this->load->view("footer");
     }
 
-    public function send($receiver){
+    public function send(){
         $this->load->helper('url');
         $this->load->model('Message_model');
         $this->load->library('session');
-        $text = $this->input->post('text');
+		$receiver = $this->input->post('rid');
+        $text = $this->input->post('msg_body');
         $user_id = $this->session->userdata('user_id');
         $this->Message_model->send_message($text, $user_id, $receiver);
         redirect("messages/show");

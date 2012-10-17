@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 class Photo extends Base_Controller {
 
     public function index() {
@@ -42,3 +43,30 @@ class Photo extends Base_Controller {
     }
 
 }
+=======
+		$this->load->library('upload', $config);
+		$this->load->library('session');
+		$this->load->model('Photo_model');
+		$this->load->model('User_model');
+		$uid = $this->session->userdata('user_id');
+		$photo_arr = $this->User_model->get_user($uid);
+		$photo = $photo_arr['photo'];
+		$this->load->helper('file');
+		$this->load->helper('url');
+		if ( ! $this->upload->do_upload())
+		{
+			
+			$this->load->view('photo');
+			
+		}
+		else
+		{
+			unlink('./web/img/'.$photo);
+			$arr = $this->upload->data();
+			$new = $arr['file_name'];
+			$this->Photo_model->add_photo($new, $uid);
+			redirect('users/show', 'location');
+		}
+		}
+	}
+>>>>>>> Jquery messages

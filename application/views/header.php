@@ -8,6 +8,33 @@ $uid = $this->session->userdata('user_id'); ?>
     <title>вЛАНе</title>
     <link href="<?php echo base_url("web/css/bootstrap.css"); ?>" rel="stylesheet">
     <link rel="icon" href="<?php echo base_url("web/favicon.ico"); ?>" type="image/x-icon"/>
+	<script src="<?php echo base_url("web/js/jquery.js"); ?>"></script>
+	<script src="<?php echo base_url("web/js/bootstrap.min.js"); ?>"></script>
+	<?php if ($active_page == 0) : ?>
+	<script>
+	function sendMessage(rid){
+		var msg_body = document.getElementById("msg_body").value;
+		if(msg_body == ''){
+				return false; 
+		}	
+		var uid = "<?php echo $user_id ?>";
+		$.post(
+			"<?php echo site_url("messages/send"); ?>",
+				{
+					'msg_body': msg_body,
+					'uid': uid,
+					'rid': rid
+				},
+			onAjaxSuccess
+		);
+	}
+function onAjaxSuccess()
+{
+  $('#msgWindow').modal('hide');
+  alert ('Сообщение отправлено');
+}
+	</script>
+	<?php endif ?>
 </head>
 <body>
 <div class="navbar">
