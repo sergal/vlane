@@ -4981,3 +4981,6 @@ a.badge:hover {
 .invisible {
     visibility: hidden;
 }
+#msg:hover {
+	border: 2px;
+}

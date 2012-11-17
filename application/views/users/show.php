@@ -9,7 +9,7 @@
         </p>
 		<?php if($user['id'] == $user_id) : ?>
 		<p><a href="<?php echo site_url("photo") ?>" class="btn"><i class="icon-user"></i> Сменить фотографию</a>
-		<a href="<?php echo site_url("users/perf") ?>" class="btn">Мои настройки</a>
+		<a href="<?php echo site_url("users/pref") ?>" class="btn">Мои настройки</a>
 		</p>
 		<?php endif ?>
 		
@@ -36,7 +36,7 @@
 </div><?php endif ?><?php if($user['id'] == $user_id){ echo '</div>'; } ?>
 </p>
     <div class="span8">
-        <h2>
+        <h2 id="user_name">
             <?php
             echo $user["name"];
             ?>
@@ -64,5 +64,25 @@
                     <input type="hidden" name="fid" value="<?php echo $user["id"] ?>"></form>
                 <?php endif ?>
         </ul>
+		<br><hr>
+		<div id="wall">
+		<?php if(($user_id != null) && ($user_id == $user["id"])) : ?>
+		<input type="text" id="new_wall_msg" placeholder="Оставить запись..."><br>
+		<button class="btn" onClick="newWallMsg(<?php echo $user_id ?>);">Сделать запись</button>
+		<?php if(count($wall_msgs) != 0) : ?><a href="#" onClick="clearWall(<?php echo $user_id ?>);" >Очистить стену</a><?php endif ?><hr>
+		<div id="wall-body">
+		<?php endif ?>
+			<?php
+				foreach ($wall_msgs as $message){
+					echo '<div id="msg"><div id="'.$message["id"].'">';
+					if(($user_id != null) && ($user_id == $user["id"])){
+					echo '<a href="'.site_url("users/show").'/'.$user["id"].'">'.$user["name"].'</a><button type="button" class="close" onClick="deleteWallMsg('.$user_id.', '.$message["id"].')">×</button><br>';
+					}
+					echo $message["body"];
+					echo '<hr><br></div></div>';
+					}
+					?>
+		</div>
+		</div>
     </div>
 </div>

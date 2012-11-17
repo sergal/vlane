@@ -26,11 +26,13 @@ class Users extends Base_Controller
         $this->load->model("User_model");
         $this->load->model("Group_model");
         $this->load->model("Friends_model");
+		$this->load->model("Wall_model");
         $data["user"] = $this->User_model->get_user($id);
         $data["groups"] = $this->Group_model->get_by_user($id);
         $data["user_id"] = $this->session->userdata('user_id');
 		$data["logged_in"] = $this->session->userdata('logged_in');		
         $data["check_friend"] = $this->Friends_model->check_friend($id, $data["user_id"]);
+		$data["wall_msgs"] = $this->Wall_model->get_wall($id);
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
@@ -148,4 +150,35 @@ class Users extends Base_Controller
         $this->load->view("users/friends", $data);
         $this->load->view("footer");
     }
+	public function pref(){
+		$this->set_header();
+		$this->load->model("Preferences_model");
+		$this->load->library('session');
+		$uid = $this->session->userdata('user_id');
+		$result = $this->Preferences_model->get_pref($uid);
+		$data['prefs'] = $result;
+		$this->load->view("users/pref", $data);
+        $this->load->view("footer");
+	}
+	public function set_pref(){
+		$this->load->model("Preferences_model");
+		$this->load->library('session');
+		$uid = $this->session->userdata('user_id');
+		if($this->input->post("act")=='pass_chg'){
+			$old_pass = $this->input->post("old_pass");
+			$new_pass = $this->input->post("new_pass");
+			$result = $this->Perferences_model->get_pref($uid);
+			if($result['id'] == $old_pass){
+				$this->Perferences_model->pass_change($uid, $pass);
+				return true;
+			} else { 
+				return false;
+			}
+		} else {
+		$params = array();
+		$params = $this->input->post("params");
+		$result = $this->Preferences_model->set_pref($params, $uid);
+		print $result;
+		}
+	}
 }
