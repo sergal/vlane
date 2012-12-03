@@ -30,13 +30,13 @@ class Users extends Base_Controller
         $data["user"] = $this->User_model->get_user($id);
         $data["groups"] = $this->Group_model->get_by_user($id);
         $data["user_id"] = $this->session->userdata('user_id');
-		$data["logged_in"] = $this->session->userdata('logged_in');		
+		$data["logged_in"] = $this->session->userdata('logged_in');
         $data["check_friend"] = $this->Friends_model->check_friend($id, $data["user_id"]);
 		$data["wall_msgs"] = $this->Wall_model->get_wall($id);
         $this->load->view("users/show", $data);
         $this->load->view("footer");
     }
-	
+
 
 //Метод отображения школы
     public function school($name_school)
@@ -79,7 +79,8 @@ class Users extends Base_Controller
         $login = $this->input->post('login');
         $pass = $this->input->post('password');
         $result = $this->User_model->get_by_login($login);
-        if ($pass != null && $result['password'] == $pass) {
+        $newpass = $this->User_model->get_db_password($login, $pass);
+        if ($pass != null && $result['password'] == $newpass) {
             $this->load->library('session');
             $user_data = array(
                 'username' => $result['name'],
@@ -171,7 +172,7 @@ class Users extends Base_Controller
 			if($result['id'] == $old_pass){
 				$this->Perferences_model->pass_change($uid, $pass);
 				return true;
-			} else { 
+			} else {
 				return false;
 			}
 		} else {

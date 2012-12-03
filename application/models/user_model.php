@@ -45,6 +45,10 @@ class User_model extends CI_Model
 
     }
 
+    public function get_db_password($login, $password) {
+
+        return md5($login . $password);
+    }
 }
 
 
