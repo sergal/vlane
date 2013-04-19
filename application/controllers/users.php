@@ -79,8 +79,8 @@ class Users extends Base_Controller
         $login = $this->input->post('login');
         $pass = $this->input->post('password');
         $result = $this->User_model->get_by_login($login);
-        $newpass = $this->User_model->get_db_password($login, $pass);
-        if ($pass != null && $result['password'] == $newpass) {
+        $new_pass = $this->User_model->get_db_password($login, $pass);
+        if ($pass != null && $result['password'] == $new_pass) {
             $this->load->library('session');
             $user_data = array(
                 'username' => $result['name'],
@@ -94,6 +94,20 @@ class Users extends Base_Controller
             $this->load->view('users/login');
         }
         $this->load->view("footer");
+    }
+
+    public function register(){
+        $this->set_header();
+        $this->load->model("User_model");
+        $this->load->helper('url');
+        $login = $this->input->post('login');
+        $pass = $this->input->post('password');
+        $result = $this->User_model->register_user($login, $pass);
+        if($result){
+            redirect('users/login', 'location');
+        } else {
+            //Trigger error
+        }
     }
 
     public function logout()
@@ -170,7 +184,7 @@ class Users extends Base_Controller
 			$new_pass = $this->input->post("new_pass");
 			$result = $this->Perferences_model->get_pref($uid);
 			if($result['id'] == $old_pass){
-				$this->Perferences_model->pass_change($uid, $pass);
+				$this->Perferences_model->pass_change($uid, $new_pass);
 				return true;
 			} else {
 				return false;

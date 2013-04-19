@@ -49,6 +49,11 @@ class User_model extends CI_Model
 
         return md5($login . $password);
     }
+    public function register_user($login, $pass){
+        $data = array('login' => md5($login), 'password' => md5($pass));
+        $row = $this->db->insert('users', $data);
+        return $row;
+    }
 }
 
 
